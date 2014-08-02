@@ -1,0 +1,115 @@
+\documentclass[12pt]{amsart}
+\usepackage{superdate}
+%\usepackage[small,compact]{titlesec} 
+\usepackage[margin=1.25in]{geometry}
+\usepackage{txfonts}
+
+\title{The \texttt{superdate} Package}
+
+\author{Edward R. Scheinerman}
+\thanks{%
+    Department of Applied Mathematics
+    and Statistics, Johns Hopkins University, Baltimore, Maryland 21218
+    USA.}
+
+
+\date{\superdate}
+
+\begin{document}
+
+\maketitle
+
+\section{Purpose}
+
+The \verb|superdate| package provides the \verb|\superdate| macro that
+produces the current date and time in the format
+\verb|YEAR:MM:DD:hh:mm| where
+\begin{itemize}
+\item \verb|YEAR| is the current year,
+\item \verb|MM| is the current month (from 01 to 12),
+\item \verb|DD| is the current day (from 01 to 31),
+\item \verb|hh| is the current hour (from 00 to 23), and 
+\item \verb|mm| is the current minute (from 00 to 59).
+\end{itemize}
+
+This is a sensible format for date/time that puts the most significant
+data to the left and the least significant data to the right. 
+
+It is useful to date papers with \verb|\superdate|, especially when
+producing multiple versions on a given day.
+
+The separating character is, by default, a colon. This can be changed
+by redefining the macro \verb|\superdateseparator| like this:
+\begin{verbatim}
+\renewcommand{\superdateseparator}{/}
+\end{verbatim}
+\renewcommand{\superdateseparator}{/}%
+Now the output of \verb|\superdate| looks like
+this: \superdate.
+
+
+\section{Other user-level macros}
+\label{sect:user}
+
+
+A few other handy date/time macros are provided.
+\begin{itemize}
+\item The macro \verb|\hyphendate| produces the current date in the
+  format \verb|YEAR-MM-DD| with leading zeros inserted into the month
+  and date if they are less than 10. Example: Today is \hyphendate.
+
+
+\item The macro \verb|\ampmtime| produces the current time in 12-hour
+  clock format with the letters `am' or `pm' appended. For example,
+  the current time is \ampmtime. Note that the hour may appear as a
+  single digit, but the minute will always be expressed with two
+  digits by prepending a zero as needed.
+
+\item The macro \verb|\miltime| produces the current time in 24-hour
+  format. Example: the current time is \miltime. Both the hour and the
+  minute will be two digits.
+\end{itemize}
+
+
+\section{Setting a different date and time}
+
+The date and time used by \verb|\superdate| (and the other macros
+described in \S\ref{sect:user}) are set from the system clock at the
+time the \verb|superdate| package is loaded; that is, at the beginning
+of the \LaTeX\ run.
+
+The macro \verb|\setcl@ck| is provided so users can reset the clock
+later in the document, or to set a date/time different from the
+current date/time. The syntax is:
+
+\noindent%
+  \verb|\setcl@ck{|\emph{time}\verb|}{|\emph{month}%
+    \verb|}{|\emph{day}\verb|}{|\emph{year}\verb|}|
+
+\noindent where 
+\begin{itemize}
+\item \emph{time} is the  time expressed as the number of
+  minutes past midnight,
+\item \emph{month} is the month expressed as number between 1 and 12,
+\item \emph{day} is the day of the month expressed as a number between
+  1 and 31, and
+\item \emph{year} is the year.
+\end{itemize}
+This command should be enclosed between \verb|\makeatletter| and
+\verb|\makeatother|. For example
+\begin{verbatim}
+\makeatletter
+\setcl@ck{721}{5}{24}{2009}
+\makeatother
+\superdate
+\end{verbatim}
+% Produces: 
+\makeatletter%
+\setcl@ck{721}{5}{24}{2009}%
+\makeatother%
+\renewcommand\superdateseparator{:}%
+produces \superdate.
+
+Note that this does not modify the output of \verb|\today| which is \today.
+
+\end{document}
