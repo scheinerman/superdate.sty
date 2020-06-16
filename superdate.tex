@@ -1,6 +1,6 @@
 \documentclass[12pt]{amsart}
 \usepackage{superdate}
-\usepackage[margin=1.25in]{geometry}
+\usepackage[margin=1.333in]{geometry}
 \usepackage{txfonts}
 
 \title{The \texttt{superdate} Package}
@@ -9,7 +9,7 @@
 \thanks{%
     Department of Applied Mathematics
     and Statistics, Johns Hopkins University, Baltimore, Maryland 21218
-    USA.}
+    USA}
 
 
 \date{\superdate}
@@ -27,12 +27,12 @@ produces the current date and time in the format
 \item \verb|YEAR| is the current year,
 \item \verb|MM| is the current month (from 01 to 12),
 \item \verb|DD| is the current day (from 01 to 31),
-\item \verb|hh| is the current hour (from 00 to 23), and 
+\item \verb|hh| is the current hour (from 00 to 23), and
 \item \verb|mm| is the current minute (from 00 to 59).
 \end{itemize}
 
 This is a sensible format for date/time that puts the most significant
-data to the left and the least significant data to the right. 
+data to the left and the least significant data to the right.
 
 It is useful to date papers with \verb|\superdate|, especially when
 producing multiple versions on a given day.
@@ -85,7 +85,7 @@ current date/time. The syntax is:
   \verb|\setcl@ck{|\emph{time}\verb|}{|\emph{month}%
     \verb|}{|\emph{day}\verb|}{|\emph{year}\verb|}|
 
-\noindent where 
+\noindent where
 \begin{itemize}
 \item \emph{time} is the  time expressed as the number of
   minutes past midnight,
@@ -102,7 +102,7 @@ This command should be enclosed between \verb|\makeatletter| and
 \makeatother
 \superdate
 \end{verbatim}
-% Produces: 
+% Produces:
 \makeatletter%
 \setcl@ck{721}{5}{24}{2009}%
 \makeatother%
